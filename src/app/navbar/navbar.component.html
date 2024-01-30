@@ -1,0 +1,33 @@
+<div class="container-fluid c2">
+    <div class="row flex-nowrap">
+      <div class="col-md-2 col-auto col-lg-2 bg-dark min-vh-100">
+        <a href="" class="d-flex align-items-center text-white text-decoration-none pb-4">
+            <br><br>
+          </a>
+          <button class="navbar-toggler"data-bs-toggle="collapse"data-bs-target="#mynav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="d-flex justify-content-center collapse navbar-collapse"id="mynav">
+            <img src="assets/images/bb3.PNG" class="rounded-circle " alt="" height="90" width="90">
+          &nbsp; <br>
+          </div>
+          
+          <ul class="nav nav-pills flex-column">
+
+           <label class=" text-white d-flex justify-content-center pb-3 "><h3>Welcome</h3></label>
+           <li class="nav-item pb-2"><a routerLink="/navbar/dashboard" class="nav-link text-white"><i class=" icons p-2 fa-solid fa-house"></i>Dashboard</a></li>
+           <li class="nav-item pb-2"><a routerLink="/navbar/categories" class="nav-link text-white"><i class="icons p-2 fa-solid fa-list"></i>Categories</a></li>
+           <li class="nav-item pb-2"><a routerLink="/navbar/limits" class="nav-link text-white"><i class="icons p-2 fa-solid fa-stopwatch"></i>Limits</a></li>
+           <li class="nav-item pb-2"><a routerLink="/navbar/expense" class="nav-link text-white"><i class=" icons p-2 fa-solid fa-chart-column"></i>Expense Tracking</a></li>
+           <li class="nav-item pb-2"><a routerLink="/navbar/offers" class="nav-link text-white  "><i class="icons p-2 fa-solid fa-envelopes-bulk"></i>Offers</a></li>
+
+             <div class=" p-5" ><button class="tri text-white d-flex justify-content-center "> Logout<i class=" icon p-2 fa-solid fa-right-from-bracket"></i></button>
+              </div>
+               </ul>
+        </div>
+    <div class="col-md-10">
+      <router-outlet ></router-outlet>
+    </div>
+  
+  </div>
+  </div>
