@@ -1,0 +1,43 @@
+.tri{
+    background-color: rgb(25, 43, 59);
+    height: 40px;
+    width: 120px;
+  }
+  .tri1{
+    background-color: rgb(25, 43, 59);
+    height: 40px;
+    width: 800px;
+    
+  }
+  .field{
+  position: relative;
+  display: inline-block;
+  
+}
+.image{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+}
+.input{
+  background-color: rgb(25, 43, 59);
+  border: none;
+  padding: 5px 20px;
+  padding-right: 600px; /* text and image don't overlap */
+   font-size: 20px;
+} 
+ .tri3{
+  color: rgb(24, 16, 75);
+  
+} 
+.icons{
+font-size: 15px;
+list-style-type: none;
+}
+.img:hover .fa-person-walking-arrow-right {
+  position: relative;
+  left: 10px;
+}
+ 
