@@ -1,0 +1,103 @@
+
+.container {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .card-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-right: 20px; 
+  }
+  
+  .limit-container,.amount-container,.redeem-container {
+    width:175px; 
+  }
+  
+  .credit-card {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  #editButton {
+    margin-top: 8px; 
+  }
+  
+  .submit-btn {
+    text-align: right;
+  }
+  
+
+
+
+
+
+
+
+
+
+.container-fluid {
+  padding: 20px;
+}
+
+.card-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative; 
+}
+
+.card {
+  width: 100%;
+  max-width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.submit-btn,
+.btn-secondary {
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .col-md-3,
+  .col-md-5,
+  .col-md-1 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .col-md-1:last-child {
+    margin-top: 10px;
+  }
+
+  .limit-container,
+  .amount-container,
+  .redeem-container,
+  .edit-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
