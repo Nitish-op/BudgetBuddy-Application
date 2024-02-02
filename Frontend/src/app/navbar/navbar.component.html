@@ -7,7 +7,7 @@
       <div class="user-logo">
         <div class="img"
           style="background-image: url(assets/images/logo.jpg)" ></div>
-        <h3>Catriona Henderson</h3>
+        <h3>{{ username }}</h3>
       </div>
     </div>
     <ul class="list-unstyled components mb-5">
@@ -25,13 +25,13 @@
         <a routerLink="#" ><span class="fa-solid fa-check-to-slot mr-3"></span>Limits</a>
       </li> -->
       <li>
-        <a routerLink="#" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"><span class="fa-solid fa-chart-simple mr-3"></span>Expence Tracking</a>
+        <a routerLink="/navbar/expencetracking" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"><span class="fa-solid fa-chart-simple mr-3"></span>Expence Tracking</a>
       </li>
       <li>
-        <a routerLink="#" routerLinkActive="active-link"><span class="fa-solid fa-circle-dollar-to-slot mr-3"></span> Offers</a>
+        <a routerLink="/navbar/offers" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"><span class="fa-solid fa-circle-dollar-to-slot mr-3"></span> Offers</a>
       </li>
       <li>
-        <a routerLink="" routerLinkActive="active-link"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+        <a routerLinkActive="active-link" (click)="logout()"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
       </li>
     </ul>
   </nav>

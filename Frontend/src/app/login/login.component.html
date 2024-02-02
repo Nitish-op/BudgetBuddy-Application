@@ -11,56 +11,39 @@
                 We are BudgetBuddy
               </h3>
               <h3 class="text-white">We are more than just a company</h3>
-              <small class="text-white"
-                >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.</small
-              >
+              <small class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
             </div>
           </div>
           <div class="card card1">
             <div class="row justify-content-center my-auto">
               <div class="col-md-8 col-10">
                 <h3 class="mb-5 text-center heading">We are BudgetBuddy</h3>
-  
                 <h6 class="msg-info">Please login to your account</h6>
-                <form (ngSubmit)="onLogin()">
+                <form (ngSubmit)="onLogin()" #loginForm="ngForm">
                   <div class="form-group">
                     <label class="form-control-label text-muted">Username</label>
-                    <input
-                      type="text"
-                      id="email"
-                      name="email"
-                      placeholder="Username or email id"
-                      class="form-control"
-                      [(ngModel)]="username"
-                    />
+                    <input type="text" id="email" name="email" placeholder="Username or email id" class="form-control"
+                           [(ngModel)]="username" #emailInput="ngModel" required/>
+                    <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="text-danger">
+                      Username is required.
+                    </div>
                   </div>
-  
+                
                   <div class="form-group">
                     <label class="form-control-label text-muted">Password</label>
-                    <input
-                      type="password"
-                      id="psw"
-                      name="psw"
-                      placeholder="Password"
-                      class="form-control"
-                      [(ngModel)]="password"
-                    />
+                    <input type="password" id="psw" name="psw" placeholder="Password" class="form-control"
+                           [(ngModel)]="password" #passwordInput="ngModel" required/>
+                    <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="text-danger">
+                      Password is required.
+                    </div>
                   </div>
-  
+                
                   <div class="row justify-content-center my-3 px-3">
-                    <button class="btn-block btn-color" (click)="onLogin()">
+                    <button class="btn-block btn-color" [disabled]="loginForm.invalid">
                       Login to BudgetBuddy
                     </button>
                   </div>
-                </form>
-                <!-- <div class="row justify-content-center">
-                  <a href="#"
-                    ><small class="text-muted">Forgot Password?</small></a
-                  >
-                </div> -->
+                </form>                
               </div>
             </div>
             <div class="bottom text-center mb-3">

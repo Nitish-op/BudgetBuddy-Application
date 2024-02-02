@@ -10,6 +10,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CardsComponent } from './cards/cards.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ExpencetrackingComponent } from './expencetracking/expencetracking.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { OffersComponent } from './offers/offers.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,15 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     NavbarComponent,
     CardsComponent,
+    ExpencetrackingComponent,
+    OffersComponent,
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HighchartsChartModule
   ],
   providers: [
     provideClientHydration()

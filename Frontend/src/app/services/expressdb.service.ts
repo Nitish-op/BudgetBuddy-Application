@@ -13,4 +13,15 @@ export class ExpressdbService {
   login(user:any){
     return this.http.post('http://localhost:4500/users/login',user);
   }
+
+
+  newcard(card:any){
+    return this.http.post('http://localhost:4500/users/newcard', card)
+  }
+
+  
+  allcards(card:any){
+    return this.http.post('http://localhost:4500/users/allcards', card)
+  }
+
 }

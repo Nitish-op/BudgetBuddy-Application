@@ -22,8 +22,8 @@ export class SignupComponent {
         "password" : this.password
       }
       this.db.register(this.user).subscribe((res)=>{alert(res)});
-      this.myrouter.navigateByUrl("/navbar/dasboard");
       localStorage.setItem("loginuser",JSON.stringify(this.user));
+      this.myrouter.navigateByUrl("/navbar/dashboard");
       // console.log(this.uname,this.pwd)    
       console.log("signup");
     }

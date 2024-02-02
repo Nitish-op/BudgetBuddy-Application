@@ -1,47 +1,119 @@
-
-<div class="container">
-    <div class="row">
-         <div class="container">
-         <div class="row">
-            <!-- <h3>Expense Tracking</h3><br> -->
-             <div class="col-md-3">
-                 <div class="card">
-                     <div calss="card-header">
-                         <h1 class="p-2">Jan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <i class="fa-solid fa-dollar-sign fa-flip"></i></h1>
-                        </div>
-                     <div class="card-body">
-                         <h5>total: 30000</h5>
-                         <h5>salary: 40000</h5>
-                     </div>
-                  </div>
-             </div>
-             <div class="col-md-3">
-                 <div class="card">
-                     <div calss="card-header">
-                         <h1 class="p-2">Feb &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa-solid fa-dollar-sign fa-flip"></i></h1>
-                         </div>
-                     <div class="card-body">
-                         <h5>total: 30000</h5>
-                         <h5>salary: 40000</h5>
-                     </div>
-                      </div>
-                     </div>
-                     <div class="col-md-3">
-                        <div class="card">
-                            <div calss="card-header">
-                                <h1 class="p-2">Feb &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa-solid fa-dollar-sign fa-flip"></i></h1>
-                                </div>
-                            <div class="card-body">
-                                <h5>total: 30000</h5>
-                                <h5>salary: 40000</h5>
-                            </div>
-                             </div>
-                            </div>
-             
-             <div class="col-md-3"> &nbsp;&nbsp;&nbsp;<br>
-                &nbsp;&nbsp;&nbsp; <h2>Expense Tracking</h2>
-                 <a routerLink="/navbar/expense"style="color:black   ;" class="d-flex justify-content-center img"><h5>View More</h5><i class=" icons  p-2 fa-solid fa-person-walking-arrow-right"></i></a>
-             </div>
-         </div>
-
+<div class="container-fluid">
+  <div class="row">
+    <div>
+      <h1>Welcome {{ username }}</h1>
+      <br />
+    </div>
+    <div class="col-md-3">
+      <div class="card tr1">
+        <div calss="card-header ">
+          <h1 class="p-2 text-white">
+            Jan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-solid fa-dollar-sign fa-flip"></i>
+            <h5 class="p-2 text-white">
+              total: 30000<br />
+              salary: 40,000
+            </h5>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card tr1">
+        <div calss="card-header ">
+          <h1 class="p-2 text-white">
+            Feb &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-solid fa-dollar-sign fa-flip"></i>
+            <h5 class="p-2 text-white">
+              total: 30000<br />
+              salary: 40,000
+            </h5>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card tr1">
+        <div calss="card-header ">
+          <h1 class="p-2 text-white">
+            March &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-solid fa-dollar-sign fa-flip"></i>
+            <h5 class="p-2 text-white">total: 30000<br />salary: 40,000</h5>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <br />
+      <h2>Expense Tracking</h2>
+      <a
+        routerLink="/navbar/expencetracking"
+        style="color: black"
+        class="d-flex justify-content-center img"
+      >
+        <h5>View More</h5>
+        <i class="icons p-2 fa-solid fa-person-walking-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div><img src="assets/images/img36.PNG " class="img" /></div>
+    </div>
+    <div class="col-md-3">
+      <div><img src="assets/images/img38.PNG " class="img" /></div>
+    </div>
+    <div class="col-md-3">
+      <div><img src="assets/images/img34.PNG " class="img" /></div>
+    </div>
+    <div class="col-md-3">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <br /><br />
+          <button class="btn tr" routerLink="/navbar/cards">
+            <h5 class="text-white">Add New card</h5>
+          </button>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<figure class="highcharts-figure">
+  <div id="container"></div>
+  <p class="highcharts-description">
+    Chart with buttons to modify options, showing how options can be changed on
+    the fly. This flexibility allows for more dynamic charts.
+  </p>
+  <button id="plain" (click)="updateChart('plain')" class="btn bg text-white">
+    Plain</button
+  >&nbsp;
+  <button
+    id="inverted"
+    (click)="updateChart('inverted')"
+    class="btn bg1 text-white"
+  >
+    Inverted</button
+  >&nbsp;
+  <button id="polar" (click)="updateChart('polar')" class="btn bg text-white">
+    Polar
+  </button>
+</figure>
+<br />
+<div>
+  <h2 class="d-flex justify-content-center bg2">File Upload & Image Preview</h2>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 two">
+      <div class="wrapper">
+        <div class="file-upload">
+          <input type="file" />
+          <i class="fa fa-arrow-up"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

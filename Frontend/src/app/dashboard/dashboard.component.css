@@ -1,42 +1,176 @@
 .tri{
-    background-color: rgb(25, 43, 59);
-    height: 40px;
-    width: 120px;
-  }
-  .tri1{
-    background-color: rgb(25, 43, 59);
-    height: 40px;
-    width: 800px;
-    
-  }
-  .field{
-  position: relative;
-  display: inline-block;
+  background-color: rgb(25, 43, 59);
+  height: 40px;
+  width: 120px;
+}
+.tri1{
+  background-color: rgb(25, 43, 59);
+  height: 40px;
+  width: 800px;
   
+}
+.field{
+position: relative;
+display: inline-block;
+
 }
 .image{
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
+position: absolute;
+right: 10px;
+top: 50%;
+transform: translateY(-50%);
+width: 30px;
 }
 .input{
-  background-color: rgb(25, 43, 59);
-  border: none;
-  padding: 5px 20px;
-  padding-right: 600px; /* text and image don't overlap */
-   font-size: 20px;
+background-color:  rgb(29, 29, 58);
+border: none;
+padding: 5px 20px;
+padding-right: 600px; /* text and image don't overlap */
+ font-size: 20px;
 } 
- .tri3{
-  color: rgb(24, 16, 75);
-  
+.tri3{
+color: rgb(29, 29, 58);
+}
+.bg1{
+  background-color: #4169E1;
+}
+.bg{
+  background-color:#191970 ;
+}
+.bg2{
+   color:#191970;
+}
+ div.two {
+  border-style: solid;
+  border-color: rgb(83, 61, 155);
+  height: 250px;
+  width: 800px;
 } 
 .icons{
 font-size: 15px;
 list-style-type: none;
 }
-.img:hover .fa-person-walking-arrow-right {
-  position: relative;
-  left: 10px;
+.img{
+ height: 150px;
+ width: 260px;
+}
+
+.tr{
+  background-color: rgb(44, 44, 85);
+  height: 50px;
+  width: 170px;
+}
+.tr1{
+  height: 150px;
+  width: 260px;
+  background-color: rgb(29, 29, 58);
+}
+#container {
+  height: 400px;
+  
+
+}
+
+.highcharts-figure,
+.highcharts-data-table table {
+  min-width: 320px;
+  max-width: 1100px;
+  margin: 1em auto;
+}
+
+.highcharts-data-table table {
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.highcharts-data-table caption {
+  padding: 1em 0;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.highcharts-data-table th {
+  font-weight: 600;
+  padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+  padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+  background: #f1f7ff;
+}
+html{
+height:100%;
+}
+
+body{
+
+background-color:#2590EB;
+height:100%;
+}
+
+.wrapper{
+
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+
+
+.file-upload{
+
+  height:150px;
+  width:150px;
+  border-radius: 100px;
+  position:relative;
+  
+  display:flex;
+  justify-content:center;
+  align-items: center;  
+
+  border:4px solid #FFFFFF;
+  overflow:hidden;
+  background-image: linear-gradient(to bottom, #5448d7 50%, #FFFFFF 50%);
+  background-size: 100% 200%;
+  transition: all 1s;
+  color: #FFFFFF;
+  font-size:100px;
+
+  input[type='file']{
+
+    height:200px;
+    width:200px;
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:0;
+    cursor:pointer;
+
+  }
+
+  &:hover{
+
+    background-position: 0 -100%;
+
+    color:#2590EB;
+
+  }
+
+
+}
 }

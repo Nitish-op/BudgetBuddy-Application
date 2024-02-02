@@ -1,172 +1,186 @@
-<h1 style="text-align: center;">My Cards and Limits</h1>
+<div class="cardpage">
+  <h1 style="text-align: center">Cards</h1>
 
-
-
-<div class="container-fluid">
-  <div class="row">
-    <h3 style="text-align: end;">Card 1</h3> 
-
-    <div class="col-md-8 card-container">
-      <div class="card">
-          <img src="assets/images/creditcardimg.png" alt="Visa Card" class="card-img-top">
-        <div class="card-body">
-          <form>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <form #creditCardForm="ngForm" (ngSubmit)="onSubmit(creditCardForm)">
             <div class="form-group">
               <label for="cardNumber">Card Number</label>
-              <input type="text" class="form-control" id="cardNumber" placeholder="Enter card number" required>
+              <input
+                type="text"
+                class="form-control"
+                id="cardNumber"
+                name="cardNumber"
+                ngModel
+                required
+              />
             </div>
 
             <div class="form-group">
               <label for="cardHolder">Cardholder Name</label>
-              <input type="text" class="form-control" id="cardHolder" placeholder="Enter cardholder name" required>
+              <input
+                type="text"
+                class="form-control"
+                id="cardHolder"
+                name="cardHolder"
+                ngModel
+                required
+              />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="expirationDate">Expiration Date</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="expirationDate"
+                  name="expirationDate"
+                  ngModel
+                  required
+                />
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="cvv">CVV</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cvv"
+                  name="cvv"
+                  ngModel
+                  required
+                />
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="expiryDate">Expiry Date</label>
-              <input type="text" class="form-control" id="expiryDate" placeholder="MM/YYYY" required>
+              <label for="setLimit">Set Limit</label>
+              <input
+                type="text"
+                class="form-control"
+                id="setLimit"
+                name="setLimit"
+                ngModel
+                required
+              />
             </div>
 
             <div class="form-group">
-              <label for="cvv">CVV</label>
-              <input type="text" class="form-control" id="cvv" placeholder="Enter CVV" required>
+              <label for="amountSpent">Amount Spent</label>
+              <input
+                type="text"
+                class="form-control"
+                id="amountSpent"
+                name="amountSpent"
+                ngModel
+                required
+              />
             </div>
 
-            <div class="submit-btn">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
-    </div>
-    <div class="col-md-1 limit-container" style="text-align: center; margin: auto;">
-      <div class="form-group">
-        <label for="limitDropdown">Select Limit:</label>
-        <input list="limits" class="form-control" id="limitDropdown" placeholder="Select limit">
-        <datalist id="limits">
-          <option value="20000">
-          <option value="40000">
-          <option value="60000">
-          <option value="80000">
-          <option value="100000">
-        </datalist>
-      </div>
-    </div>
 
-    <div class="col-md-1 amount-container" style="text-align: center; margin: auto;">
-      <div class="form-group">
-        <label for="amountSpent">Amount Spent:</label>
-        <input type="text" class="form-control" id="amountSpent" placeholder="Amount spent">
-      </div>
-    </div>
-
-    <div class="col-md-1 redeem-container" style="text-align: center; margin: auto;">
-      <div class="form-group">
-        <label for="redeemPoints">Redeem Points:</label>
-        <input type="text" class="form-control" id="redeemPoints" placeholder="Redeem points">
-      </div>
-    </div>
-
-    <div class="col-md-1 edit-container" style="text-align: center; margin: auto;">
-      <button class="btn btn-secondary mt-1" id="editButton">Edit</button>
-    </div>
-  </div>
-
-
-
-  <div class="row">
-    <h3 style="text-align: end;">Card 2</h3> 
-
-    <div class="col-md-8 card-container">
-      <div class="card">
-          <img src="assets/creditcardimg.png" alt="Visa Card" class="card-img-top">
-        <div class="card-body">
-          <form>
-            <div class="form-group">
-              <label for="cardNumber">Card Number</label>
-              <input type="text" class="form-control" id="cardNumber" placeholder="Enter card number" required>
+      <div class="col-md-6">
+        <div *ngIf="displayCreditCard" class="card">
+          <div class="card-body">
+            <h5 class="card-title">Credit Card</h5>
+            <div class="card-number">
+              Card Number:{{ creditCardData.cardNumber }}
             </div>
-
-            <div class="form-group">
-              <label for="cardHolder">Cardholder Name</label>
-              <input type="text" class="form-control" id="cardHolder" placeholder="Enter cardholder name" required>
+            <div class="card-holder">
+              Card Holder:{{ creditCardData.cardHolder }}
             </div>
-
-            <div class="form-group">
-              <label for="expiryDate">Expiry Date</label>
-              <input type="text" class="form-control" id="expiryDate" placeholder="MM/YYYY" required>
+            <div class="expiration-date">
+              Expiry:{{ creditCardData.expirationDate }}
             </div>
-
-            <div class="form-group">
-              <label for="cvv">CVV</label>
-              <input type="text" class="form-control" id="cvv" placeholder="Enter CVV" required>
+            <div class="cvv">CVV{{ creditCardData.cvv }}</div>
+            <div class="set-limit">
+              Set Limit: {{ creditCardData.setLimit }}
             </div>
-
-            <div class="submit-btn">
-              <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="amount-spent">
+              Amount Spent: {{ creditCardData.amountSpent }}
             </div>
-          </form>
+            <button type="reset" class="btn btn-primary" (click)="okaybutton()">
+              Confirm Details
+            </button>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-1 limit-container" style="text-align: center; margin: auto;">
-      <div class="form-group">
-        <label for="limitDropdown">Select Limit:</label>
-        <input list="limits" class="form-control" id="limitDropdown" placeholder="Select limit">
-        <datalist id="limits">
-          <option value="20000">
-          <option value="40000">
-          <option value="60000">
-          <option value="80000">
-          <option value="100000">
-        </datalist>
-      </div>
-    </div>
-
-    <div class="col-md-1 amount-container" style="text-align: center; margin: auto;">
-      <div class="form-group">
-        <label for="amountSpent">Amount Spent:</label>
-        <input type="text" class="form-control" id="amountSpent" placeholder="Amount spent">
-      </div>
-    </div>
-
-    <div class="col-md-1 redeem-container" style="text-align: center; margin: auto;">
-      <div class="form-group">
-        <label for="redeemPoints">Redeem Points:</label>
-        <input type="text" class="form-control" id="redeemPoints" placeholder="Redeem points">
-      </div>
-    </div>
-
-    <div class="col-md-1 edit-container" style="text-align: center; margin: auto;">
-      <button class="btn btn-secondary mt-1" id="editButton">Edit</button>
-    </div>
   </div>
 
+  <h1 style="text-align: center">My Cards</h1>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <div class="container mt-5">
+    <div class="card ml-5">
+      <div class="card-header">Credit Card</div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="cardNumber">Card Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cardnumber"
+            [(ngModel)]="cardnumber"
+            placeholder="Enter card number"
+          />
+        </div>
+        <div class="form-row">
+          <div class="col-md-6">
+            <label for="expiryDate">Expiry Date</label>
+            <input
+              type="text"
+              class="form-control"
+              id="expirydate"
+              [(ngModel)]="expirydate"
+              placeholder="MM/YY"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="cvv">CVV</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cvv"
+              [(ngModel)]="CVV"
+              placeholder="CVV"
+            />
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="creditLimit">Limit</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="limit"
+              [(ngModel)]="limit"
+              placeholder="Enter limit amount"
+            />
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="creditLimit">Spent</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="spent"
+              [(ngModel)]="spent"
+              placeholder="Enter spent amount"
+            />
+          </div>
+        </div>
+        <div class="mt-3">
+          <button class="btn btn-secondary mr-3">Edit</button>
+          <button class="btn btn-danger mt-2">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
