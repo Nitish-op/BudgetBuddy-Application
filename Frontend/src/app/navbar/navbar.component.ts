@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   constructor(private myrouter:Router){}
   @ViewChild('myTag') myTag: any;
-  isselected=true;
+  isselected=false;
   user:any;
   username:any;
   ngOnInit(){

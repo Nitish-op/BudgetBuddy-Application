@@ -1,122 +1,44 @@
-<div class="cardpage">
-  <h1 style="text-align: center">Cards</h1>
+<h1 style="text-align: center">My Cards</h1>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <form #creditCardForm="ngForm" (ngSubmit)="onSubmit(creditCardForm)">
-            <div class="form-group">
-              <label for="cardNumber">Card Number</label>
-              <input
-                type="text"
-                class="form-control"
-                id="cardNumber"
-                name="cardNumber"
-                ngModel
-                required
-              />
+<a routerLink="/navbar/addcard" class="btn btn-primary">Add New Card +</a>
+
+
+<div class="col-md-5" *ngFor="let card of myCards">
+  <div class="body">
+    <div class="containerd">
+      <header>
+        <span class="logo">
+          <img src="assets/images/logo.png" alt="" />
+          <h5>Master Card</h5>
+        </span>
+        <img src="assets/images/chip.png" alt="" class="chip" />
+      </header>
+      <div class="containerd">
+        <div *ngIf="!card.updatable">
+          <div class="card-details">
+            <div class="name-number">
+              <h6>Card Number</h6>
+              <h5 class="number">{{ card.cardNumber }}</h5>
+              <h5 class="name">{{ card.cardholderName }}</h5>
             </div>
-
-            <div class="form-group">
-              <label for="cardHolder">Cardholder Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="cardHolder"
-                name="cardHolder"
-                ngModel
-                required
-              />
+            <div class="cvv">
+              <h6>CVV</h6>
+              <h5>{{ card.cvv }}</h5>
             </div>
-
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="expirationDate">Expiration Date</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="expirationDate"
-                  name="expirationDate"
-                  ngModel
-                  required
-                />
-              </div>
-
-              <div class="form-group col-md-6">
-                <label for="cvv">CVV</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cvv"
-                  name="cvv"
-                  ngModel
-                  required
-                />
-              </div>
+            <div class="valid-date">
+              <h6>Valid Thru</h6>
+              <h5>{{ card.expirationDate }}</h5>
             </div>
 
-            <div class="form-group">
-              <label for="setLimit">Set Limit</label>
-              <input
-                type="text"
-                class="form-control"
-                id="setLimit"
-                name="setLimit"
-                ngModel
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="Card Type">Card Type</label>
-              <input
-                type="text"
-                class="form-control"
-                id="cardType"
-                name="cardType"
-                ngModel
-                required
-              />
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-      <!---confirm form--->
-      <div class="col-md-6">
-        <div *ngIf="displayCreditCard" class="card">
-          <div class="card-body">
-            <h5 class="card-title">Credit Card</h5>
-            <div class="card-number">
-              Card Number:{{ creditCardData.cardNumber }}
-            </div>
-            <div class="card-holder">
-              Card Holder:{{ creditCardData.cardHolder }}
-            </div>
-            <div class="expiration-date">
-              Expiry:{{ creditCardData.expirationDate }}
-            </div>
-            <div class="cvv">CVV{{ creditCardData.cvv }}</div>
-            <div class="set-limit">
-              Set Limit: {{ creditCardData.setLimit }}
-            </div>
-            <div class="card-type">
-              Card type: {{ creditCardData.cardType }}
-            </div>
-            <button type="reset" class="btn btn-primary" (click)="okaybutton()">
-              Confirm Details
-            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <h1 style="text-align: center">My Cards</h1>
 
-  <div class="container mt-5">
+<!-- <div class="container mt-5">
     <div class="row">
       <div class="col-md-4" *ngFor="let card of myCards">
         <div *ngIf="!card.updatable">
@@ -169,5 +91,5 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div> -->
+<!-- </div> -->
