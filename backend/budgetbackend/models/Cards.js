@@ -26,11 +26,7 @@ const cardSchema = new mongoose.Schema({
   setLimit: {
     type: String,
     required: true,
-  },
-  amountSpent: {
-    type: String,
-    default: 0,
-  },
+  }
 });
 
 const Card = mongoose.model('Card', cardSchema);
