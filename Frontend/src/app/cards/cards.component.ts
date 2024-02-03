@@ -9,20 +9,34 @@ import { ExpressdbService } from '../services/expressdb.service';
 export class CardsComponent {
 
   constructor(private db:ExpressdbService){}
-  
+  myCards: any[] = [];
   displayCreditCard = false;
   creditCardData: any = {};
+  user : any;
+  username: any;
+  _id : any;
+
+  ngOnInit(){
+    this.user = localStorage.getItem("logeduser");
+    this.user = JSON.parse(this.user);
+    this.username = this.user.username;
+    console.log(this.username);
+    this.db.allcards(this.username).subscribe((res)=>{
+      this.myCards = Object.values(res);
+    })
+  }
 
   onSubmit(form: any): void {
     if (form.valid) {
       this.creditCardData = {
-        userName:'Sample',
+        userName:this.username,
         cardNumber: form.value.cardNumber,
         cardholderName: form.value.cardHolder,
         expirationDate: form.value.expirationDate,
         cvv: form.value.cvv,
         setLimit: form.value.setLimit,
-        amountSpent: form.value.amountSpent
+        cardType: form.value.cardType
+        // amountSpent: form.value.amountSpent
       };
 
   
@@ -34,18 +48,19 @@ export class CardsComponent {
     this.db.newcard(this.creditCardData).subscribe((res)=>{alert(res)})
   }
 
+  delete(card:any){
+    this.db.deletecard(card)
+  }
 
+  edit(card:any){
+    card.updatable = true
+    // card.updatable = !card.updatable;
+  }
 
-  cardnumber: string = '';
-  expirydate: string = '';
-  CVV: string = '';
-  limit: string='';
-  spent:string='';
-  
-
-
-
-
-
+  update(card:any){
+    // p.updatable = !p.updatable;
+    card.updatable = false
+    this.db.updatecard(card);
+  }
 
 }

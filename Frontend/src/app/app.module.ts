@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExpencetrackingComponent } from './expencetracking/expencetracking.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { OffersComponent } from './offers/offers.component';
+import { TrailComponent } from './trail/trail.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { OffersComponent } from './offers/offers.component';
     CardsComponent,
     ExpencetrackingComponent,
     OffersComponent,
+    TrailComponent,
     ],
   imports: [
     BrowserModule,

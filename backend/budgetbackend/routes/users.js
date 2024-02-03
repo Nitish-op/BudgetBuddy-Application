@@ -58,7 +58,6 @@ router.post('/login', async (req, res) => {
         res.json({
             _id: user._id,
             username: user.username
-            // Add any other user information you want to send
         });
 
     } catch (error) {
@@ -67,31 +66,61 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('/newcard', async (req, res) => {
+router.post('/newCard', async (req, res) => {
     try {
-       const card = new Card(req.body);
-       await card.save();
-       res.send(card).status(201);
+      const { cardNumber } = req.body;
+
+      // Check if card already exists
+      const existingCard = await Card.findOne({ cardNumber });
+      if (existingCard) {
+          return res.status(400).json({ error: 'Card already exists' });
+      }
+
+      // Hash the cardnumber
+      // const hashedCardNumber = await bcrypt.hash(cardNumber, 10);
+
+      // Create a new card
+      const newcard = new Card({
+        userName :req.body.userName,
+        cardNumber: req.body.cardNumber,
+        cardholderName: req.body.cardholderName,
+        expirationDate: req.body.expirationDate,
+        cvv: req.body.cvv,
+        setLimit: req.body.setLimit,
+        cardType: req.body.cardType,
+        updatable: false
+      });
+      // Save the new card to the database
+      await newcard.save();
+
+      res.status(201).json({ message: 'card registered successfully' });
      } catch (error) {
        res.send({ error: error.message }).status(400);
      }
   });
  
  
- router.get('/allcards', async (req, res) => {
+ router.post('/allCards', async (req, res) => {
     try {
-       const cards = await Card.find();
-       res.send(cards).status(200);
+        const { userName } = req.body;  
+        console.log(req.body);
+        let usercard = await Card.find({  userName: userName } );
+        if (!usercard) {
+          return res.status(404).json({ error: 'Cards not found' });
+        }
+        // const decryptedCardNumber =  bcrypt.compare(usercard.cardNumber, 10);
+
+        res.json(usercard);
      } catch (error) {
        res.send({ error: error.message }).status(500);
      }
   });
  
  
- router.put('/allcards/cardNumber', async (req, res) => {
-    const cardNumber  = req.body;
+ router.put('/cardDetails', async (req, res) => {
+    const cardDetails  = req.body;
     try {
-      const updatedCard = await Card.findByIdAndUpdate(cardNumber, req.body, { new: true });
+      const updatedCard = await Card.findByIdAndUpdate(cardDetails, req.body, { new: true });
   
       if (!updatedCard) {
         return res.send({ error: 'Card not found' }).status(404);
@@ -106,7 +135,7 @@ router.post('/newcard', async (req, res) => {
   }); 
  
  
- router.delete('/allcards/cardNumber', async (req, res) => {
+ router.delete('/cardDetails', async (req, res) => {
     const cardNumber = req.body;
   
     try {

@@ -1,15 +1,51 @@
-.car{
-  height: 300px;
-  width: 500px;
-  border-radius: 35px;
-      border: 2px solid #bebb9d;
-} 
-/* *{
-  background-color: #22263f;
-} */
-.food{
-  border-radius: 15px;
-      border: 2px solid #bebb9d;
-      padding: 7px;
-     color:black;
+.offers-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.offer-category {
+  margin-bottom: 30px;
+}
+
+.offer-category h3 {
+  color: #333;
+  border-bottom: 2px solid #007BFF;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.offer-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.offer-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.offer-card h4 {
+  color: #333;
+}
+
+.offer-card p {
+  color: #666;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
 }

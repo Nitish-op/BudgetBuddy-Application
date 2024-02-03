@@ -4,7 +4,6 @@ const cardSchema = new mongoose.Schema({
   userName :{
     type: String,
     required: true,
-    unique:true
   },
   cardNumber: {
     type: String,
@@ -26,6 +25,14 @@ const cardSchema = new mongoose.Schema({
   setLimit: {
     type: String,
     required: true,
+  },
+  cardType: {
+    type: String,
+    required: true
+  },
+  updatable: {
+    type: Boolean,
+    required: true
   }
 });
 

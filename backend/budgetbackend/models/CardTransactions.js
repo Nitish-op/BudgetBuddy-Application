@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const cardDataSchema = new mongoose.Schema({
-    userName :{type: String,required: true,unique:true},
+    userName :{type: String,required: true},
     cardNumber: {type: String,required: true},
     amountSpent: {type: Number,default: 0},
     date: {type: Date},
-    rewards : {type: Number},
+    rewards : {type: null},
     transactionType : {type: String}
 });
 

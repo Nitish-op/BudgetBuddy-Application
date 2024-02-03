@@ -16,11 +16,20 @@ export class ExpressdbService {
   }
 
   newcard(card:any){
-    return this.http.post('http://localhost:4500/users/newcard', card)
+    return this.http.post('http://localhost:4500/users/newcard', card, ({responseType:'json'}))
   }
   
-  allcards(card:any){
-    return this.http.post('http://localhost:4500/users/allcards', card)
+  allcards(userName: string) {
+    console.log("connection" + userName);
+    return this.http.post('http://localhost:4500/users/allCards', { userName: userName }, { responseType: 'json' });
+  }
+  
+
+  updatecard(card:any){
+    return this.http.post('http://localhost:4500/users/cardDetails', card, ({responseType:'json'}))
   }
 
+  deletecard(card:any){
+    return this.http.post('http://localhost:4500/users/cardDetails', card, ({responseType:'json'}))
+  }
 }
