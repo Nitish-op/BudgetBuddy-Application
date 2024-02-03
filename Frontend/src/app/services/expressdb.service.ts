@@ -7,18 +7,17 @@ import { response } from 'express';
 })
 export class ExpressdbService {
   constructor(private http:HttpClient) { }
-  register(user:any){
-    return this.http.post('http://localhost:4500/users/register',user,({responseType:'text'}));
-  }
-  login(user:any){
-    return this.http.post('http://localhost:4500/users/login',user);
+  signup(user:any){
+    return this.http.post('http://localhost:4500/users/signup',user,({responseType:'json'}));
   }
 
+  login(user:any){
+    return this.http.post('http://localhost:4500/users/login',user,({responseType:'json'}));
+  }
 
   newcard(card:any){
     return this.http.post('http://localhost:4500/users/newcard', card)
   }
-
   
   allcards(card:any){
     return this.http.post('http://localhost:4500/users/allcards', card)

@@ -3,7 +3,7 @@ var router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+const Card = require('../models/Cards')
 
 router.post('/signup', async (req, res) => {
     try {
@@ -66,6 +66,62 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ error: 'Login failed' });
     }
 });
+
+router.post('/newcard', async (req, res) => {
+    try {
+       const card = new Card(req.body);
+       await card.save();
+       res.send(card).status(201);
+     } catch (error) {
+       res.send({ error: error.message }).status(400);
+     }
+  });
+ 
+ 
+ router.get('/allcards', async (req, res) => {
+    try {
+       const cards = await Card.find();
+       res.send(cards).status(200);
+     } catch (error) {
+       res.send({ error: error.message }).status(500);
+     }
+  });
+ 
+ 
+ router.put('/allcards/cardNumber', async (req, res) => {
+    const cardNumber  = req.body;
+    try {
+      const updatedCard = await Card.findByIdAndUpdate(cardNumber, req.body, { new: true });
+  
+      if (!updatedCard) {
+        return res.send({ error: 'Card not found' }).status(404);
+      }
+      if(updatedCard){
+      return res.send(updatedCard).status(200);
+      }
+     } 
+     catch (error) {
+      res.send({ error: error.message }).status(400);
+    }
+  }); 
+ 
+ 
+ router.delete('/allcards/cardNumber', async (req, res) => {
+    const cardNumber = req.body;
+  
+    try {
+      const deletedCard = await Card.findByIdAndDelete(cardNumber);
+  
+      if (!deletedCard) {
+        return res.send({ error: 'Card not found' }).status(404);
+      }
+      if(deletedCard){
+      res.send({ message: 'Card deleted successfully' }).status(200);
+      }
+    } catch (error) {
+      res.send({ error: error.message }).status(400);
+    }
+  });
 
 
 module.exports = router;
