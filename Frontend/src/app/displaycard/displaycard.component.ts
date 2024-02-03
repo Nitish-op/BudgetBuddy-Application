@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { ExpressdbService } from '../services/expressdb.service';
 
 @Component({
-  selector: 'app-cards',
-  templateUrl: './cards.component.html',
-  styleUrl: './cards.component.css'
+  selector: 'app-displaycard',
+  templateUrl: './displaycard.component.html',
+  styleUrl: './displaycard.component.css'
 })
-export class CardsComponent {
-
+export class DisplaycardComponent {
   constructor(private db:ExpressdbService){}
   myCards: any[] = [];
   displayCreditCard = false;
@@ -74,5 +73,4 @@ export class CardsComponent {
     card.updatable = false
     this.db.updatecard(card);
   }
-
 }

@@ -14,6 +14,7 @@ import { ExpencetrackingComponent } from './expencetracking/expencetracking.comp
 import { HighchartsChartModule } from 'highcharts-angular';
 import { OffersComponent } from './offers/offers.component';
 import { TrailComponent } from './trail/trail.component';
+import { DisplaycardComponent } from './displaycard/displaycard.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { TrailComponent } from './trail/trail.component';
     ExpencetrackingComponent,
     OffersComponent,
     TrailComponent,
+    DisplaycardComponent,
     ],
   imports: [
     BrowserModule,

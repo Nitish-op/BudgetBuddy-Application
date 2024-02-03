@@ -1,37 +1,74 @@
 <div class="wrapper d-flex align-items-stretch">
   <nav id="sidebar" [class.active]="isselected" #myTag>
     <div class="custom-menu">
-      <button type="button" (click)="togglebar()" id="sidebarCollapse" class="btn btn-primary"></button>
+      <button
+        type="button"
+        (click)="togglebar()"
+        id="sidebarCollapse"
+        class="btn btn-primary"
+      ></button>
     </div>
-    <div class="img bg-wrap text-center py-4" style="background-image: url(assets/images/bg_1.jpg)">
+    <div
+      class="img bg-wrap text-center py-4"
+      style="background-image: url(assets/images/bg_1.jpg)"
+    >
       <div class="user-logo">
-        <div class="img"
-          style="background-image: url(assets/images/logo.jpg)" ></div>
+        <div
+          class="img"
+          style="background-image: url(assets/images/logo.jpg)"
+        ></div>
         <h3>{{ username }}</h3>
       </div>
     </div>
     <ul class="list-unstyled components mb-5">
       <li class="active">
-        <a routerLink="/navbar/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
-          true}">
+        <a
+          routerLink="/navbar/dashboard"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
           <span class="fa fa-home mr-3"></span>Dashboard
         </a>
       </li>
       <li>
-        <a routerLink="/navbar/cards" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
-          true}"><span class="fa-regular fa-credit-card mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span>Cards</a>
+        <a
+          routerLink="/navbar/cards"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          ><span class="fa-regular fa-credit-card mr-3 notif"
+            ><small class="d-flex align-items-center justify-content-center"
+              >5</small
+            ></span
+          >Add Cards</a
+        >
       </li>
-      <!-- <li>
-        <a routerLink="#" ><span class="fa-solid fa-check-to-slot mr-3"></span>Limits</a>
-      </li> -->
       <li>
-        <a routerLink="/navbar/expencetracking" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"><span class="fa-solid fa-chart-simple mr-3"></span>Expence Tracking</a>
+        <a routerLink="/navbar/displaycard"
+          ><span class="fa-solid fa-check-to-slot mr-3"></span>My Cards</a
+        >
       </li>
       <li>
-        <a routerLink="/navbar/offers" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"><span class="fa-solid fa-circle-dollar-to-slot mr-3"></span> Offers</a>
+        <a
+          routerLink="/navbar/expencetracking"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          ><span class="fa-solid fa-chart-simple mr-3"></span>Expence
+          Tracking</a
+        >
       </li>
       <li>
-        <a routerLinkActive="active-link" (click)="logout()"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+        <a
+          routerLink="/navbar/offers"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          ><span class="fa-solid fa-circle-dollar-to-slot mr-3"></span>
+          Offers</a
+        >
+      </li>
+      <li>
+        <a routerLinkActive="active-link" (click)="logout()"
+          ><span class="fa fa-sign-out mr-3"></span> Sign Out</a
+        >
       </li>
     </ul>
   </nav>
