@@ -3,7 +3,8 @@ var router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Card = require('../models/Cards')
+const Card = require('../models/Cards');
+const CardData=require("../models/CardTransactions");
 
 router.post('/signup', async (req, res) => {
     try {
@@ -151,6 +152,31 @@ router.post('/newCard', async (req, res) => {
       res.send({ error: error.message }).status(400);
     }
   });
+
+
+  router.post('/cardData', async (req, res) => {
+    try {
+      // Create a new card
+      const newcard = new CardData({
+        userName :req.body.userName,
+        cardNumber: req.body.cardNumber,
+        amountSpent: req.body.amountSpent,
+        date: req.body.date,
+        rewards: req.body.rewards,
+        transactionType: req.body.transactionType,
+      });
+      // Save the new card to the database
+      await newcard.save();
+
+      res.status(201).json({ message: 'Card Details registered successfully' });
+     } catch (error) {
+       res.send({ error: error.message }).status(400);
+     }
+  });
+
+
+
+
 
 
 module.exports = router;
