@@ -1,6 +1,6 @@
 * {
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
@@ -12,6 +12,10 @@
   margin-top: 10px;
 }
 
+a{
+  text-decoration: none;
+  color: #f8f9fa;
+}
 .card {
     max-width: 400px;
     margin: 0 auto;
