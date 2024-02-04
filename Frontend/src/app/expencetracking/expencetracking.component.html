@@ -1,4 +1,4 @@
-<div class="container-fluid py-3">
+<!-- <div class="container-fluid py-3">
   <h1>Angular Highcharts</h1>
 
   <div class="row mt-5">
@@ -17,4 +17,28 @@
       <div id="chart-line"></div>
     </div>
   </div>
-</div>
+</div> -->
+
+<select name="" id="" [(ngModel)]="selectedCard" (change)="getDetails()">
+  <option  *ngFor="let a of myCards" [value]="a.cardNumber">{{a.cardNumber}}</option>
+</select>
+
+<table>
+  <tr>
+    <th>Spending Type</th>
+    <th>Spending Amount</th>
+    <th>Spending Date</th>
+  </tr>
+  <tr *ngFor="let card of spendings">
+    <td>{{card.transactionType}}</td>
+    <td>{{card.amountSpent}}</td>
+    <td>{{card.date}}</td>
+  </tr>
+</table>
+
+
+<ngx-charts-pie-chart [view]="view" 
+[scheme]="colorScheme" [results]="single" 
+[legend]="true" [explodeSlices]="false">
+</ngx-charts-pie-chart>
+<p>Transactions of {{selectedCard}}</p>

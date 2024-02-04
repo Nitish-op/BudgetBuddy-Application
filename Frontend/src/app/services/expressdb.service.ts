@@ -23,7 +23,15 @@ export class ExpressdbService {
     console.log("connection" + userName);
     return this.http.post('http://localhost:4500/users/allCards', { userName: userName }, { responseType: 'json' });
   }
-  
+  getCardData(cardNum:any){
+    return this.http.post("http://localhost:4500/users/getCardData",cardNum);
+  }
+
+  getCardDatabyName(card:any){
+    return this.http.post("http://localhost:4500/users/getCardDatabyName",card);
+    
+  }
+
 
   updatecard(card:any){
     return this.http.post('http://localhost:4500/users/cardDetails', card, ({responseType:'json'}))

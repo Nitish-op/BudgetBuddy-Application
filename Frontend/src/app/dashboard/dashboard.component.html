@@ -11,8 +11,7 @@
             Jan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <i class="fa-solid fa-dollar-sign fa-flip"></i>
             <h5 class="p-2 text-white">
-              Limit: 30000<br />
-              salary: 40,000
+             Total Spending {{janamount|currency:'INR'}}
             </h5>
           </h1>
         </div>
@@ -25,24 +24,13 @@
             Feb &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <i class="fa-solid fa-dollar-sign fa-flip"></i>
             <h5 class="p-2 text-white">
-              Limit: 30000<br />
-              salary: 40,000
+              TotalSpendings {{febamount|currency:'INR'}}
             </h5>
           </h1>
         </div>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="card tr1">
-        <div calss="card-header ">
-          <h1 class="p-2 text-white">
-            March &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="fa-solid fa-dollar-sign fa-flip"></i>
-            <h5 class="p-2 text-white">Limit: 30000<br />salary: 40,000</h5>
-          </h1>
-        </div>
-      </div>
-    </div>
+  
     <div class="col-md-3">
       <br />
       <h2>Expense Tracking</h2>
@@ -51,35 +39,61 @@
         style="color: black"
         class="d-flex justify-content-center img"
       >
-        <h5>View More</h5>
-        <i class="icons p-2 fa-solid fa-person-walking-arrow-right"></i>
+        <label>View More</label>
+        <i class="icons p-2 fa fa-person-walking-arrow-right"></i>
       </a>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-3">
-      <div><img src="assets/images/img36.PNG " class="img" /></div>
-    </div>
-    <div class="col-md-3">
-      <div><img src="assets/images/img38.PNG " class="img" /></div>
-    </div>
-    <div class="col-md-3">
-      <div><img src="assets/images/img34.PNG " class="img" /></div>
-    </div>
-    <div class="col-md-3">
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-          <br /><br />
-          <button class="btn tr" routerLink="/navbar/cards">
-            <h5 class="text-white">Add New card</h5>
-          </button>
+      <div class="col-md-5" *ngFor="let card of myCards;index as i">
+        <div *ngIf="i<2">
+          <div class="col-md-12" >
+          
+            <div class="cardscontainer">
+              <div class="containerd">
+                <header>
+              
+                  <span class="logo">
+                    <img src="assets/images/logo.png" alt="" />
+                    <h5>Master Card</h5>
+                  </span>
+                  <img src="assets/images/chip.png" alt="" class="chip" />
+                </header>
+                <div class="containerd">
+                  <div *ngIf="!card.updatable">
+                    <div class="card-details">
+                      <div class="name-number">
+                        <h6>Card Number</h6>
+                        <h5 class="number">{{ card.cardNumber }}</h5>
+                        <h5 class="name">{{ card.cardholderName }}</h5>
+                      </div>
+                      <div class="cvv">
+                        <h6>CVV</h6>
+                        <h5>{{ card.cvv }}</h5>
+                      </div>
+                      <div class="valid-date">
+                        <h6>Valid Thru</h6>
+                        <h5>{{ card.expirationDate }}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
         </div>
-        <div class="col-md-3"></div>
+    
       </div>
-    </div>
+     <div class="col-md-2">
+      <button class="btn tr" routerLink="/navbar/cards">
+        <h5 class="text-white">Add New card</h5>
+      </button>
+     </div>
+    
+    
   </div>
-</div>
+
 <br />
 <figure class="highcharts-figure">
   <div id="container"></div>

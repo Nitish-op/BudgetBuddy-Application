@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import Highcharts from 'highcharts/es-modules/masters/highcharts.src';
+import { ExpressdbService } from '../services/expressdb.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,10 +10,11 @@ import Highcharts from 'highcharts/es-modules/masters/highcharts.src';
 })
 export class DashboardComponent {
   chart: Highcharts.Chart | null = null;
-  constructor(private myrouter:Router) {}
+  constructor(private myrouter:Router,private service:ExpressdbService) {}
   user:any;
-  username:any;
+  username:any;expenses:any;janamount=0;febamount=0;filterexpense:any;
   ngOnInit(){
+
     if(localStorage.getItem('logeduser')==null)
       this.myrouter.navigateByUrl("");
     else{
@@ -20,7 +22,51 @@ export class DashboardComponent {
       this.user = JSON.parse(this.user);
       this.username = this.user.username;
     }
+    this.user={
+      "userName":this.username
+    }
+    this.service.allcards(this.username).subscribe((res)=>{
+      this.myCards = Object.values(res);
+    })
+    this.service.getCardDatabyName(this.user).subscribe((result)=>{
+      this.expenses=result;
+      console.log(result)
+      this.caljanamount()
+      this.calfebamount();
+    })
+
   }
+  
+  calfebamount(){
+    this.filterexpense=this.expenses.filter((item:any)=>item.date.startsWith('2024-02'))
+      console.log(this.filterexpense)
+    for(let i of this.filterexpense){
+      this.febamount=this.febamount+i.amountSpent;
+      
+    }
+    console.log(this.febamount)
+
+  }
+
+  caljanamount(){
+      
+    this.filterexpense=this.expenses.filter((item:any)=>item.date.startsWith('2024-01'))
+      console.log(this.filterexpense)
+    for(let i of this.filterexpense){
+      this.janamount=this.janamount+i.amountSpent;
+      
+    }
+    console.log(this.janamount)
+
+  }  
+
+  myCards: any[] = [];
+  displayCreditCard = false;
+  creditCardData: any = {};
+ 
+  _id : any;
+
+
   ngAfterViewInit() {
     this.chart = Highcharts.chart('container', {
       title: {

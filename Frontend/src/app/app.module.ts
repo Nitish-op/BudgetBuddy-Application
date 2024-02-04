@@ -15,6 +15,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { OffersComponent } from './offers/offers.component';
 import { TrailComponent } from './trail/trail.component';
 import { AddcardComponent } from './addcard/addcard.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AddcardComponent } from './addcard/addcard.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    NgxChartsModule
   ],
   providers: [
     provideClientHydration()

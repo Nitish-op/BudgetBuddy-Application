@@ -168,14 +168,25 @@ router.post('/newCard', async (req, res) => {
       });
       // Save the new card to the database
       await newcard.save();
-
       res.status(201).json({ message: 'Card Details registered successfully' });
      } catch (error) {
        res.send({ error: error.message }).status(400);
      }
   });
 
+  router.post('/getCardData', async (req,res)=>{
+      CardData.find({cardNumber:req.body.cardNumber})
+      .then((result)=>{res.send(result)})
+      .catch((err)=>{console.log(err)})
 
+  })
+
+  router.post('/getCardDatabyName', async (req,res)=>{
+    CardData.find({userName:req.body.userName})
+    .then((result)=>{res.send(result)})
+    .catch((err)=>{console.log(err)})
+
+})
 
 
 

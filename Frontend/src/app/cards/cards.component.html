@@ -4,36 +4,48 @@
   <a routerLink="/navbar/addcard">Add New Card +</a>
 </button>
 
-<div class="col-md-5" *ngFor="let card of myCards">
-  <div class="cardscontainer">
-    <div class="containerd">
-      <header>
-        <span class="logo">
-          <img src="assets/images/logo.png" alt="" />
-          <h5>Master Card</h5>
-        </span>
-        <img src="assets/images/chip.png" alt="" class="chip" />
-      </header>
-      <div class="containerd">
-        <div *ngIf="!card.updatable">
-          <div class="card-details">
-            <div class="name-number">
-              <h6>Card Number</h6>
-              <h5 class="number">{{ card.cardNumber }}</h5>
-              <h5 class="name">{{ card.cardholderName }}</h5>
-            </div>
-            <div class="cvv">
-              <h6>CVV</h6>
-              <h5>{{ card.cvv }}</h5>
-            </div>
-            <div class="valid-date">
-              <h6>Valid Thru</h6>
-              <h5>{{ card.expirationDate }}</h5>
+<div class="row">
+  <div class="col-md-5" *ngFor="let card of myCards;index as i">
+
+
+    <div *ngIf="i<5">
+      <div class="col-md-12" >
+      
+        <div class="cardscontainer">
+          <div class="containerd">
+            <header>
+          
+              <span class="logo">
+                <img src="assets/images/logo.png" alt="" />
+                <h5>Master Card</h5>
+              </span>
+              <img src="assets/images/chip.png" alt="" class="chip" />
+            </header>
+            <div class="containerd">
+              <div *ngIf="!card.updatable">
+                <div class="card-details">
+                  <div class="name-number">
+                    <h6>Card Number</h6>
+                    <h5 class="number">{{ card.cardNumber }}</h5>
+                    <h5 class="name">{{ card.cardholderName }}</h5>
+                  </div>
+                  <div class="cvv">
+                    <h6>CVV</h6>
+                    <h5>{{ card.cvv }}</h5>
+                  </div>
+                  <div class="valid-date">
+                    <h6>Valid Thru</h6>
+                    <h5>{{ card.expirationDate }}</h5>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
+
   </div>
 </div>
 
