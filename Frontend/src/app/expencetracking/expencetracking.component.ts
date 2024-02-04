@@ -38,7 +38,7 @@ export class ExpencetrackingComponent{
   }
 
   single: any[] = [];   
-  view: [number, number] = [700, 400];
+  view: [number, number] = [500, 400];
   colorScheme:Color = {
     domain: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#9C27B0'],
     name: 'Custom Scheme', 

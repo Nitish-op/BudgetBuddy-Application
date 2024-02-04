@@ -16,6 +16,7 @@ import { OffersComponent } from './offers/offers.component';
 import { TrailComponent } from './trail/trail.component';
 import { AddcardComponent } from './addcard/addcard.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { UploadbillsComponent } from './uploadbills/uploadbills.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     OffersComponent,
     TrailComponent,
     AddcardComponent,
+    UploadbillsComponent,
     ],
   imports: [
     BrowserModule,

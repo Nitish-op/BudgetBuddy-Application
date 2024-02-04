@@ -195,7 +195,7 @@ justify-content:center;
 
 a {
   text-decoration: none;
-  color: #fff;
+ 
 }
 
 .containerd {
@@ -253,3 +253,17 @@ h5.name {
   justify-content: space-between;
   align-items: flex-end;
 }
+
+@media only screen and (min-width:800px) {
+  .mya{
+    margin-left: 950px;
+    margin-top: -150px;
+  }
+}
+
+@media only screen and (max-width:790px) {
+  .mya{
+    display: none;
+  }
+}
+

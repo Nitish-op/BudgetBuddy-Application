@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ExpencetrackingComponent } from './expencetracking/expencetracking.component';
 import { OffersComponent } from './offers/offers.component';
 import { AddcardComponent } from './addcard/addcard.component';
+import { UploadbillsComponent } from './uploadbills/uploadbills.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
     {path:'addcard',component:AddcardComponent},
     {path:'cards',component:CardsComponent},
     {path:'expencetracking',component:ExpencetrackingComponent},
-    {path:'offers',component:OffersComponent}
+    {path:'offers',component:OffersComponent},
+    {path:'upload',component:UploadbillsComponent}
   ]}
 ];
 

@@ -27,6 +27,10 @@ export class ExpressdbService {
     return this.http.post("http://localhost:4500/users/getCardData",cardNum);
   }
 
+  uploadBill(data:any){
+    return this.http.post("http://localhost:4500/users/saveall",data)
+  }
+
   getCardDatabyName(card:any){
     return this.http.post("http://localhost:4500/users/getCardDatabyName",card);
     

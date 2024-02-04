@@ -174,6 +174,15 @@ router.post('/newCard', async (req, res) => {
      }
   });
 
+  router.post("/saveall",(req,res)=>{
+      const dataArray=req.body;
+
+      CardData.create(dataArray)
+      .then((result)=>res.send({"message":"uploaded"}))
+      .catch((err)=>{console.log(err)})
+
+  })
+
   router.post('/getCardData', async (req,res)=>{
       CardData.find({cardNumber:req.body.cardNumber})
       .then((result)=>{res.send(result)})
