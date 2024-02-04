@@ -1,8 +1,6 @@
 <div class="cardpage">
   <h1 style="text-align: center">Cards</h1>
-  <a routerLink="/navbar/cards" class="btn btn-primary mb-3 ml-4"
-    >View My Cards</a
-  >
+  <a routerLink="/navbar/cards" class="btn btn-primary mb-3 ml-4">View My Cards</a>
   <div class="container">
     <div class="row">
       <div class="col-md-6">
@@ -17,6 +15,8 @@
                 name="cardNumber"
                 ngModel
                 required
+                pattern="\d{16}"
+                placeholder="Enter 16-digit card number"
               />
             </div>
 
@@ -29,12 +29,14 @@
                 name="cardHolder"
                 ngModel
                 required
+                pattern="[A-Za-z ]+"
+                placeholder="Enter cardholder name"
               />
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="expirationDate">Expiration Date</label>
+                <label for="expirationDate">Expiry (MM/YY)</label>
                 <input
                   type="text"
                   class="form-control"
@@ -42,6 +44,8 @@
                   name="expirationDate"
                   ngModel
                   required
+                  pattern="^(0[1-9]|1[0-2])\/\d{2}$"
+                  placeholder="Enter expiration date (MM/YY)"
                 />
               </div>
 
@@ -54,6 +58,8 @@
                   name="cvv"
                   ngModel
                   required
+                  pattern="\d{3}"
+                  placeholder="Enter 3-digit CVV"
                 />
               </div>
             </div>
@@ -67,6 +73,8 @@
                 name="setLimit"
                 ngModel
                 required
+                pattern="\d+"
+                placeholder="Enter set limit (numbers only)"
               />
             </div>
 
@@ -79,6 +87,7 @@
                 name="cardType"
                 ngModel
                 required
+                placeholder="Enter card type"
               />
             </div>
 
@@ -86,6 +95,11 @@
           </form>
         </div>
       </div>
+
+
+
+
+
       <!---confirm form--->
       <div class="col-md-6">
         <div *ngIf="displayCreditCard" class="card">
@@ -112,6 +126,43 @@
             </button>
           </div>
         </div>
+
+        
+      <!-- ... (previous code) ... -->
+
+<div class="col-md-6">
+  <div class="card" *ngIf="!displayCreditCard">
+    <div class="card-body">
+      <h5 class="card-title">Card Details</h5>
+      <div *ngIf="creditCardForm.invalid && creditCardForm.dirty" class="alert alert-danger">
+        <div *ngIf="creditCardForm.controls['cardNumber'].invalid && creditCardForm.controls['cardNumber'].dirty">
+          Please enter a valid 16-digit card number.
+        </div>
+        <div *ngIf="creditCardForm.controls['cardHolder'].invalid && creditCardForm.controls['cardHolder'].dirty">
+          Please enter a valid cardholder name.
+        </div>
+        <div *ngIf="creditCardForm.controls['expirationDate'].invalid && creditCardForm.controls['expirationDate'].dirty">
+          Please enter a valid expiration date (MM/YY).
+        </div>
+        <div *ngIf="creditCardForm.controls['cvv'].invalid && creditCardForm.controls['cvv'].dirty">
+          Please enter a valid 3-digit CVV.
+        </div>
+        <div *ngIf="creditCardForm.controls['setLimit'].invalid && creditCardForm.controls['setLimit'].dirty">
+          Please enter a valid set limit (numbers only).
+        </div>
+        <div *ngIf="creditCardForm.controls['cardType'].invalid && creditCardForm.controls['cardType'].dirty">
+          Please enter a valid card type.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ... (remaining code) ... -->
+
+
+
+
       </div>
     </div>
   </div>
