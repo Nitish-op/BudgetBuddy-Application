@@ -1,7 +1,8 @@
 <h1 style="text-align: center">My Cards</h1>
 
-<a routerLink="/navbar/addcard" class="btn btn-primary">Add New Card +</a>
-
+<button class="btn btn-primary">
+  <a routerLink="/navbar/addcard">Add New Card +</a>
+</button>
 
 <div class="col-md-5" *ngFor="let card of myCards">
   <div class="body">
@@ -29,14 +30,12 @@
               <h6>Valid Thru</h6>
               <h5>{{ card.expirationDate }}</h5>
             </div>
-
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <!-- <div class="container mt-5">
     <div class="row">
