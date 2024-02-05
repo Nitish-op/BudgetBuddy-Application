@@ -1,31 +1,35 @@
 <div class="back py-5">
-    <div class="container px-4 py-3 mx-auto">
-      <div class="card card0">
-        <div class="d-flex flex-lg-row flex-column-reverse">
-          <div class="card card2">
-            <div class="my-auto mx-md-5 px-md-5 right">
-              <div class="row justify-content-center px-3 mb-3">
-                <img class="img-thumbnail" id="logoLeft" src="assets/images/logo.jpg" />
-              </div>
-              <h3 class="mb-5 text-center heading text-white">
-                We are BudgetBuddy
-              </h3>
-              <h3 class="text-white">We are more than just a company</h3>
-              <small class="text-white"
-                >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.</small
-              >
+  <div class="container px-4 py-3 mx-auto">
+    <div class="card card0">
+      <div class="d-flex flex-lg-row flex-column-reverse">
+        <div class="card card2">
+          <div class="my-auto mx-md-5 px-md-5 right">
+            <div class="row justify-content-center px-3 mb-3">
+              <img
+                class="img-thumbnail"
+                id="logoLeft"
+                src="assets/images/logo.jpg"
+              />
             </div>
+            <h3 class="mb-5 text-center heading text-white">
+              We are BudgetBuddy
+            </h3>
+            <h3 class="text-white">We are more than just a company</h3>
+            <small class="text-white">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </small>
           </div>
-          <div class="card card1">
-            <div class="row justify-content-center my-auto">
-              <div class="col-md-8 col-10">
-                <h3 class="mb-5 text-center heading">We are BudgetBuddy</h3>
-  
-                <h6 class="msg-info">Please Signup Using Email</h6>
-  
+        </div>
+        <div class="card card1">
+          <div class="row justify-content-center my-auto">
+            <div class="col-md-8 col-10">
+              <h3 class="mb-5 text-center heading">We are BudgetBuddy</h3>
+              <h6 class="msg-info">Please Signup Using Email</h6>
+
+              <form #signupForm="ngForm" (ngSubmit)="registernow()">
                 <div class="form-group">
                   <label class="form-control-label text-muted">Username</label>
                   <input
@@ -35,19 +39,31 @@
                     placeholder="Username"
                     class="form-control"
                     [(ngModel)]="username"
+                    required
                   />
                 </div>
-  
+
                 <div class="form-group">
-                    <label class="form-control-label text-muted">Email</label>
-                    <input
-                      type="text"
-                      id="email"
-                      name="email"
-                      placeholder="Email"
-                      class="form-control"
-                      [(ngModel)]="email"
-                    />
+                  <label class="form-control-label text-muted">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    class="form-control"
+                    [(ngModel)]="email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    required
+                  />
+                  <div
+                    *ngIf="email.invalid && (email.dirty || email.touched)"
+                    class="text-danger"
+                  >
+                    <div *ngIf="email.errors.required">Email is required.</div>
+                    <div *ngIf="email.errors.pattern">
+                      Please enter a valid email address.
+                    </div>
+                  </div>
                 </div>
 
                 <div class="form-group">
@@ -59,39 +75,48 @@
                     placeholder="Password"
                     class="form-control"
                     [(ngModel)]="password"
+                    required
                   />
                 </div>
-                
+
                 <div class="form-group">
-                    <label class="form-control-label text-muted">Confirm Password</label>
-                    <input
-                      type="password"
-                      id="cpsw"
-                      name="cpsw"
-                      placeholder="Confirm Password"
-                      class="form-control"
-                      [(ngModel)]="confirmPassword"
-                    />
-                  </div>
+                  <label class="form-control-label text-muted"
+                    >Confirm Password</label
+                  >
+                  <input
+                    type="password"
+                    id="cpsw"
+                    name="cpsw"
+                    placeholder="Confirm Password"
+                    class="form-control"
+                    [(ngModel)]="confirmPassword"
+                    required
+                  />
+                </div>
 
                 <div class="row justify-content-center my-3 px-3">
-                  <button class="btn-block btn-color" (click)="registernow()">
+                  <button
+                    type="submit"
+                    class="btn-block btn-color"
+                    [disabled]="signupForm.invalid"
+                  >
                     Signup to BudgetBuddy
                   </button>
                 </div>
-              </div>
+              </form>
             </div>
-            <div class="bottom text-center mb-3">
-              <p class="sm-text mx-auto mb-3">
-                Already have an account?
-                <button class="btn btn-white ml-2" routerLink="">
-                    <a id="login-link">Login</a>
-                </button>
-              </p>
-            </div>
+          </div>
+          <div class="bottom text-center mb-3">
+            <p class="sm-text mx-auto mb-3">
+              Already have an account?
+              <button class="btn btn-white ml-2" routerLink="">
+                <a id="login-link">Login</a>
+              </button>
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <router-outlet></router-outlet>
+</div>
+<router-outlet></router-outlet>

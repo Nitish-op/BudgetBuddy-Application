@@ -6,3 +6,4 @@ backend/budgetbackend/node_modules
 Frontend/.angular
 Frontend/.vscode
 backend/node_modules/
+package-lock.json

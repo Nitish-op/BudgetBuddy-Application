@@ -1,63 +1,97 @@
 <div class="back py-5">
-    <div class="container px-4 py-3 mx-auto">
-      <div class="card card0">
-        <div class="d-flex flex-lg-row flex-column-reverse">
-          <div class="card card2">
-            <div class="my-auto mx-md-5 px-md-5 right">
-              <div class="row justify-content-center px-3 mb-3">
-                <img class="img-thumbnail" id="logoLeft" src="assets\images\logo.jpg" />
-              </div>
-              <h3 class="mb-5 text-center heading text-white">
-                We are BudgetBuddy
-              </h3>
-              <h3 class="text-white">We are more than just a company</h3>
-              <small class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
+  <div class="container px-4 py-3 mx-auto">
+    <div class="card card0">
+      <div class="d-flex flex-lg-row flex-column-reverse">
+        <div class="card card2">
+          <div class="my-auto mx-md-5 px-md-5 right">
+            <div class="row justify-content-center px-3 mb-3">
+              <img
+                class="img-thumbnail"
+                id="logoLeft"
+                src="assets\images\logo.jpg"
+              />
+            </div>
+            <h3 class="mb-5 text-center heading text-white">
+              We are BudgetBuddy
+            </h3>
+            <h3 class="text-white">We are more than just a company</h3>
+            <small class="text-white">BudgetBuddy helps you manage your spending, set limits on your cards, track your expenses, and provides insights on your spending habits. With BudgetBuddy, you can make informed financial decisions and save money more effectively.</small>
+          </div>
+        </div>
+        <div class="card card1">
+          <div class="row justify-content-center my-auto">
+            <div class="col-md-8 col-10">
+              <h3 class="mb-5 text-center heading">We are BudgetBuddy</h3>
+              <h6 class="msg-info">Please login to your account</h6>
+              <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+                <div class="form-group">
+                  <label class="form-control-label text-muted">Username</label>
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="Username or email id"
+                    class="form-control"
+                    [(ngModel)]="username"
+                    #emailInput="ngModel"
+                    required
+                  />
+                  <div
+                    *ngIf="
+                      emailInput.invalid &&
+                      (emailInput.dirty || emailInput.touched)
+                    "
+                    class="text-danger"
+                  >
+                    Username is required.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-control-label text-muted">Password</label>
+                  <input
+                    type="password"
+                    id="psw"
+                    name="psw"
+                    placeholder="Password"
+                    class="form-control"
+                    [(ngModel)]="password"
+                    #passwordInput="ngModel"
+                    required
+                  />
+                  <div
+                    *ngIf="
+                      passwordInput.invalid &&
+                      (passwordInput.dirty || passwordInput.touched)
+                    "
+                    class="text-danger"
+                  >
+                    Password is required.
+                  </div>
+                </div>
+
+                <div class="row justify-content-center my-3 px-3">
+                  <button
+                    class="btn-block btn-color"
+                    [disabled]="loginForm.invalid"
+                  >
+                    Login to BudgetBuddy
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
-          <div class="card card1">
-            <div class="row justify-content-center my-auto">
-              <div class="col-md-8 col-10">
-                <h3 class="mb-5 text-center heading">We are BudgetBuddy</h3>
-                <h6 class="msg-info">Please login to your account</h6>
-                <form (ngSubmit)="onLogin()" #loginForm="ngForm">
-                  <div class="form-group">
-                    <label class="form-control-label text-muted">Username</label>
-                    <input type="text" id="email" name="email" placeholder="Username or email id" class="form-control"
-                           [(ngModel)]="username" #emailInput="ngModel" required/>
-                    <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="text-danger">
-                      Username is required.
-                    </div>
-                  </div>
-                
-                  <div class="form-group">
-                    <label class="form-control-label text-muted">Password</label>
-                    <input type="password" id="psw" name="psw" placeholder="Password" class="form-control"
-                           [(ngModel)]="password" #passwordInput="ngModel" required/>
-                    <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="text-danger">
-                      Password is required.
-                    </div>
-                  </div>
-                
-                  <div class="row justify-content-center my-3 px-3">
-                    <button class="btn-block btn-color" [disabled]="loginForm.invalid">
-                      Login to BudgetBuddy
-                    </button>
-                  </div>
-                </form>                
-              </div>
-            </div>
-            <div class="bottom text-center mb-3">
-              <p class="sm-text mx-auto mb-5">
-                Don't have an account?
-                <button class="btn btn-white ml-2" routerLink="/signup">
-                  <a id="login-link">Signup</a>
-                </button>
-              </p>
-            </div>
+          <div class="bottom text-center mb-3">
+            <p class="sm-text mx-auto mb-5">
+              Don't have an account?
+              <button class="btn btn-white ml-2" routerLink="/signup">
+                <a id="login-link">Signup</a>
+              </button>
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <router-outlet></router-outlet>
-  
+</div>
+<router-outlet></router-outlet>

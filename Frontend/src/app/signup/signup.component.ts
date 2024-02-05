@@ -27,7 +27,7 @@ export class SignupComponent {
           alert(res.message); // Display the message property from the response
           localStorage.setItem("loginuser", JSON.stringify(this.user));
           // Redirect or perform other actions on successful registration
-          // this.myrouter.navigateByUrl("/navbar/dashboard");
+          this.myrouter.navigateByUrl("/navbar/dashboard");
         },
         (error) => {
           console.error(error);

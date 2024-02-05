@@ -56,10 +56,12 @@ export class UploadbillsComponent {
       this.service.uploadBill(convertedData).subscribe((res)=>{
           this.result=res;
         if(this.result.message=="uploaded")
-        {Swal.fire({
+        {
+          Swal.fire({
           title: "Successfully uploaded",
           icon: "success"
-        });}
+        });
+      }
         else{
           alert("something went wrong")
         }

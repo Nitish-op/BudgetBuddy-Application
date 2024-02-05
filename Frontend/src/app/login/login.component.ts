@@ -21,7 +21,7 @@ export class LoginComponent {
       "username":this.username,
       "password":this.password
     }
-    console.log("ts"+this.user.username);
+    console.log("this"+this.user.username);
     this.db.login(this.user).subscribe((res)=>{
 
       console.log("User Info:", JSON.stringify(res));

@@ -9,10 +9,22 @@ import { ExpressdbService } from '../services/expressdb.service';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-  chart: Highcharts.Chart | null = null;
   constructor(private myrouter:Router,private service:ExpressdbService) {}
-  user:any;
-  username:any;expenses:any;janamount=0;febamount=0;filterexpense:any;
+  chart: Highcharts.Chart | null = null;
+  user: any;
+  username: any;
+  expenses: any;
+  monthsarray: number[] = [];
+  janamount=0;
+  febamount=0;
+  filterexpense:any;
+  
+  myCards: any[] = [];
+  displayCreditCard = false;
+  creditCardData: any = {};
+ 
+  _id : any;
+
   ngOnInit(){
 
     if(localStorage.getItem('logeduser')==null)
@@ -31,66 +43,54 @@ export class DashboardComponent {
     this.service.getCardDatabyName(this.user).subscribe((result)=>{
       this.expenses=result;
       console.log(result)
-      this.caljanamount()
-      this.calfebamount();
+      this.calculateMonthlyAmounts(); // Calculate monthly amounts
+      this.initChart();// Initialize chart after calculating monthly amounts
+      this.janamount = this.monthsarray[0];
+      this.febamount = this.monthsarray[1];
+      console.log("jan"+this.monthsarray);
     })
-
   }
   
-  calfebamount(){
-    this.filterexpense=this.expenses.filter((item:any)=>item.date.startsWith('2024-02'))
-      console.log(this.filterexpense)
-    for(let i of this.filterexpense){
-      this.febamount=this.febamount+i.amountSpent;
-      
+  calculateMonthlyAmounts() {
+    const monthsData: any = {};
+    for (const expense of this.expenses) {
+      const month = expense.date.substring(5, 7); // Extract month from date (format: 'yyyy-mm-dd')
+      if (!monthsData[month]) {
+        monthsData[month] = 0;
+      }
+      monthsData[month] += expense.amountSpent;
     }
-    console.log(this.febamount)
-
-  }
-
-  caljanamount(){
-      
-    this.filterexpense=this.expenses.filter((item:any)=>item.date.startsWith('2024-01'))
-      console.log(this.filterexpense)
-    for(let i of this.filterexpense){
-      this.janamount=this.janamount+i.amountSpent;
-      
-    }
-    console.log(this.janamount)
-
+    this.monthsarray = Object.values(monthsData);
+    console.log("Monthly amounts:", this.monthsarray);
   }  
 
-  myCards: any[] = [];
-  displayCreditCard = false;
-  creditCardData: any = {};
- 
-  _id : any;
 
 
-  ngAfterViewInit() {
+  initChart() {
     this.chart = Highcharts.chart('container', {
       title: {
-          text: 'Amount Spent',
-          align: 'left'
+        text: 'Amount Spent',
+        align: 'left'
       },
       subtitle: {
-          text: 'Chart option: Plain',
-          align: 'left'
+        text: 'Chart option: Plain',
+        align: 'left'
       },
-      colors: ['#191970','#4169E1'],
+      colors: ['#191970', '#4169E1'],
       xAxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
       },
       series: [{
-          type: 'column',
-          name: 'Spent Amount',
-          borderRadius: 5,
-          colorByPoint: true,
-          data: [5412, 4977, 4730, 4437, 3947, 3707, 4143, 3609,3311, 3072, 2899, 2887],
-          showInLegend: false
+        type: 'column',
+        name: 'Spent Amount',
+        borderRadius: 5,
+        colorByPoint: true,
+        data: this.monthsarray,
+        showInLegend: false
       }]
     });
   }
+  
   
   updateChart(chartType: string) {
     if (this.chart) {
