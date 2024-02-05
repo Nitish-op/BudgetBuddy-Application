@@ -2,4 +2,12 @@
     .co{
         margin-left: -80px;
     }
+  
 }
+
+.sorted-header {
+    background-color: #e0e0e0;  /* Add your desired background color for the sorted header */
+    cursor: pointer;
+  }
+
+  

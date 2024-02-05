@@ -23,7 +23,8 @@ router.post('/signup', async (req, res) => {
         const newUser = new User({
             username: username,
             email: email,
-            password: hashedPassword
+            password: hashedPassword,
+            rewards:1
         });
 
         // Save the new user to the database
@@ -36,6 +37,13 @@ router.post('/signup', async (req, res) => {
     }
 });
 
+router.get("/user/:uname",(req,res)=>{
+
+  User.findOne({username:req.params.  uname})
+    .then((result)=>res.send(result))
+    .catch(err=>console.log(err))
+
+})
 
 router.post('/login', async (req, res) => {
     try {
@@ -174,12 +182,37 @@ router.post('/newCard', async (req, res) => {
      }
   });
 
-  router.post("/saveall",(req,res)=>{
+  router.post("/saveall",async(req,res)=>{
       const dataArray=req.body;
-
+        let user=new User();
       CardData.create(dataArray)
       .then((result)=>res.send({"message":"uploaded"}))
       .catch((err)=>{console.log(err)})
+        let uname=dataArray[0].userName
+        user=await User.findOne({username:uname})
+        if (!user) {
+          return res.send({ message: 'User not found' });
+        }
+        else{
+          user.rewards+=1;
+          await user.save()
+        }
+
+          // .then((result)=>{
+          //   user=result;
+          //   console.log(user.rewards)
+          //   // let newuser=new User({
+          //   //   userName:result.userName,
+          //   //   email:result.email,
+          //   //   password:result.password,
+          //   //   rewards:result.rewards+1
+          //   // })
+          //   // newuser.save()
+            
+          // })
+          // .catch((err)=>console.log(err))
+
+
 
   })
 

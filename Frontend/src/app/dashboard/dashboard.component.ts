@@ -22,10 +22,20 @@ export class DashboardComponent {
   myCards: any[] = [];
   displayCreditCard = false;
   creditCardData: any = {};
- 
+  totalSalary=0;
   _id : any;
-
+  cardlen=0;expenseslen=0;
+  findlen(){
+   
+    this.expenseslen=this.expenses.length
+  }
+  findcardlen(){
+    this.cardlen=this.myCards.length;
+  }
+  userDetails:any;
+  
   ngOnInit(){
+
 
     if(localStorage.getItem('logeduser')==null)
       this.myrouter.navigateByUrl("");
@@ -33,22 +43,35 @@ export class DashboardComponent {
       this.user = localStorage.getItem("logeduser");
       this.user = JSON.parse(this.user);
       this.username = this.user.username;
+
+      this.service.getUser(this.username).subscribe((result)=>{
+        this.userDetails=result
+        console.log(this.userDetails)
+      })
+
     }
     this.user={
       "userName":this.username
     }
     this.service.allcards(this.username).subscribe((res)=>{
       this.myCards = Object.values(res);
+      this.findcardlen()
     })
+   
+
+
     this.service.getCardDatabyName(this.user).subscribe((result)=>{
       this.expenses=result;
       console.log(result)
       this.calculateMonthlyAmounts(); // Calculate monthly amounts
       this.initChart();// Initialize chart after calculating monthly amounts
-      this.janamount = this.monthsarray[0];
-      this.febamount = this.monthsarray[1];
-      console.log("jan"+this.monthsarray);
+      this.findlen()
+        for(let s of this.monthsarray){
+          this.totalSalary+=s;
+        }
+      
     })
+    
   }
   
   calculateMonthlyAmounts() {

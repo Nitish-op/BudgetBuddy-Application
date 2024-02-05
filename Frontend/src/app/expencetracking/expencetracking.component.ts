@@ -45,7 +45,10 @@ export class ExpencetrackingComponent{
     selectable: true,      
     group: ScaleType.Ordinal, 
    };
-
+   sortKey = 'date';
+   sortReverse = false;
+ 
+  
 
     display(){
     const totalSpendingByType = this.calculateTotalSpending(this.spendings);
@@ -82,7 +85,32 @@ export class ExpencetrackingComponent{
   })
   }
 
+  getHeaderClass(key: string): string {
+    return this.sortKey === key ? 'sorted-header' : '';
+  }
 
+  sortTable(key: string) {
+    // If the same key is clicked again, reverse the order
+    if (this.sortKey === key) {
+      this.sortReverse = !this.sortReverse;
+    } else {
+      // If a new key is clicked, reset the order to ascending
+      this.sortKey = key;
+      this.sortReverse = false;
+    }
+
+    // Sort the transactions array based on the selected key and order
+    this.spendings.sort((a:any, b:any) => {
+      const valueA = a[key];
+      const valueB = b[key];
+
+      if (typeof valueA === 'string') {
+        return this.sortReverse ? valueB.localeCompare(valueA) : valueA.localeCompare(valueB);
+      }
+
+      return this.sortReverse ? valueB - valueA : valueA - valueB;
+    });
+  }
 }
 
 // export class ExpencetrackingComponent {

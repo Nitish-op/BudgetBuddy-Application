@@ -51,9 +51,9 @@
   <div class="col-md-5 col-12">
     <table class="table table-bordered" *ngIf="spendings">
       <tr>
-        <th>Spending Type</th>
-        <th>Spending Amount</th>
-        <th>Spending Date</th>
+        <th [ngClass]="getHeaderClass('transactionType')" (click)="sortTable('transactionType')">Spending Type</th>
+        <th  [ngClass]="getHeaderClass('amountSpent')" (click)="sortTable('amountSpent')">Spending Amount</th>
+        <th [ngClass]="getHeaderClass('date')" (click)="sortTable('date')">Spending Date</th>
       </tr>
       <tr *ngFor="let card of spendings">
         <td>{{ card.transactionType }}</td>

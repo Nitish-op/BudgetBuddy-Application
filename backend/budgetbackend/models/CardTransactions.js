@@ -5,7 +5,6 @@ const cardDataSchema = new mongoose.Schema({
     cardNumber: {type: String,required: true},
     amountSpent: {type: Number},
     date: {type: Date},
-    rewards : {type: String},
     transactionType : {type: String}
 });
 

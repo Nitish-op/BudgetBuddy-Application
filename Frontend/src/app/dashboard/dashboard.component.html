@@ -5,7 +5,52 @@
       <br />
     </div>
   </div>
+
   <div class="row">
+    <div class="col-md-4 col-12 col-xl-3">
+        <div class="card bg-c-blue order-card">
+            <div class="card-block">
+                <h6 class="m-b-20">Amount</h6>
+                <h2 class="text-right"><img src="assets/images/rupee.png" class="f-left" height="30" width="30" alt=""> <span>{{totalSalary}}</span></h2>
+                <p class="m-b-0" style="margin-left: 20px;">Total Spendings</p>
+               
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-12 col-xl-3">
+        <div class="card bg-c-green order-card">
+            <div class="card-block">
+                <h6 class="m-b-20">Cards</h6>
+                <h2 class="text-right"> <img src="assets/images/credit.png" class="f-left" height="50" width="50" alt=""> <span>{{cardlen}}</span></h2>
+                <p class="m-b-0">Total Cards</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-12 col-xl-3">
+        <div class="card bg-c-yellow order-card">
+            <div class="card-block">
+                <h6 class="m-b-20">Transactions</h6>
+                <h2 class="text-right"><img src="assets/images/trans.webp" class="f-left" height="50" width="50" alt=""><span>{{expenseslen}}</span></h2>
+                <p class="m-b-0">Total Transactions</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-pink order-card">
+            <div class="card-block">
+                <h6 class="m-b-20">Rewards</h6>
+                <h2 class="text-right"><img src="assets/images/rewards.png" class="f-left" height="50" width="50" alt=""><span>{{userDetails.rewards}}</span></h2>
+                <p class="m-b-0">Reward Points</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <!-- <div class="row">
     
       <div class="col-md-3">
         <div class="card tr1">
@@ -36,12 +81,12 @@
       <div class="col-md-3 mt-5">
         <a  routerLink="/navbar/expencetracking">View More</a>
       </div>
-    </div>
+    </div> -->
   
    
   </div>
 
-  <div class="mydiv">
+  <div class="mydiv" *ngIf="myCards.length!=0">
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="row">
@@ -97,7 +142,7 @@
   
 
 <br />
-<figure class="highcharts-figure">
+<figure class="highcharts-figure" *ngIf="myCards.length!=0">
   <div id="container"></div>
   <p class="highcharts-description">
     Chart with buttons to modify options, showing how options can be changed on
